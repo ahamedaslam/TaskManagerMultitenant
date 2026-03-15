@@ -30,7 +30,6 @@ namespace TaskManager.Services
                 _logger.LogInformation("[{logId}] AI chat request started. UserId={UserId}, TenantId={TenantId}", logId,userId, tenantId);
                 
                 // Load chat history
-                // Load chat history
 
                 _logger.LogDebug("[{logId}] Loading last 10 chat messages",logId);
 

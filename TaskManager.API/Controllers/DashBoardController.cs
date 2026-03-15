@@ -12,7 +12,7 @@ namespace TaskManager.Controllers
         private readonly IDashboardService _dashboardService;
         private readonly ILogger<DashboardController> _logger;
         private readonly CurrentUserService _currentUserService;
-        public DashboardController(IDashboardService dashboardService, ILogger<DashboardController> logger,CurrentUserService currentUserService)
+        public DashboardController(IDashboardService dashboardService, ILogger<DashboardController> logger, CurrentUserService currentUserService)
         {
             _dashboardService = dashboardService;
             _logger = logger;
@@ -20,7 +20,7 @@ namespace TaskManager.Controllers
         }
 
         [Authorize(Roles = "Admin,Normal")]
-        [HttpGet("stats")]
+        [HttpGet("taskAnalytics")]
         public async Task<IActionResult> GetDashboardStats()
         {
             var logId = Guid.NewGuid().ToString();
@@ -46,5 +46,10 @@ namespace TaskManager.Controllers
 
 
         }
-    } 
+     
+     
+    }
 }
+
+
+

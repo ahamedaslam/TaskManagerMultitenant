@@ -21,8 +21,7 @@ public class AuthControllerTests
     //These lines create mock objects for dependencies of AuthController, using the Moq library
 
 
-    private AuthController CreateController() =>
-        new(_authServiceMock.Object, _loggerMock.Object, _refreshTokenServiceMock.Object);
+    private AuthController CreateController() => new(_authServiceMock.Object, _loggerMock.Object, _refreshTokenServiceMock.Object);
     //This method creates an instance of AuthController using the mocked dependencies. This is useful for keeping the test code clean and DRY
 
     [Fact]

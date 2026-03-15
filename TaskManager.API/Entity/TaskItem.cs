@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskManager.Models
 {
@@ -18,6 +17,7 @@ namespace TaskManager.Models
         [ForeignKey("TenantId")]
         public Tenant Tenant { get; set; }  // Add this navigation property
 
+        
         
         
         // Foreign key to ApplicationUser

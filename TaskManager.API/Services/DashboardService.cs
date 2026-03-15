@@ -2,6 +2,7 @@
 using TaskManager.Helper;
 using TaskManager.Interface;
 using TaskManager.Models.Responses;
+using TaskManager.MultiTenant.DTOs.TaskManager;
 using TaskManager.Services.Interfaces;
 
 public class DashboardService : IDashboardService
@@ -39,4 +40,33 @@ public class DashboardService : IDashboardService
             throw;
         }
     }
+
+    //public async Task<Response<TaskAnalyticsDTO>> GetTaskAnalytics(string tenantId, string logId)
+    //{
+
+    //    _logger.LogInformation("[{LogId}] Fetching task analytics for TenantId: {TenantId}", logId, tenantId);
+
+    //    try
+    //    {
+    //        var analytics = await _dashboardRepository.GetTaskAnalytics(tenantId);
+
+    //        if (analytics == null)
+    //        {
+    //            _logger.LogWarning("[{LogId}] No task analytics found for TenantId: {TenantId}", logId, tenantId);
+    //            return ResponseHelper.NotFound<TaskAnalyticsDTO>("No task analytics found.");
+    //        }
+
+    //        _logger.LogInformation("[{LogId}] Successfully fetched task analytics for TenantId: {TenantId}", logId, tenantId);
+
+    //        return ResponseHelper.SuccessGeneric<TaskAnalyticsDTO>(analytics);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        _logger.LogError(ex, "[{LogId}] Exception while fetching task analytics for TenantId: {TenantId}", logId, tenantId);
+    //        throw;
+    //    }
+    //}
+
+ 
 }
+ 
