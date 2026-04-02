@@ -96,6 +96,17 @@ namespace TaskManager.Services
 
                 var aiMessage = CleanAi.CleanAiText(ollamaResult?.Response ?? "No response from AI");
 
+                object finalResponse; //craete the obj that hold json object
+
+                if (CleanAi.IsJson(aiMessage))
+                {
+                    finalResponse = System.Text.Json.JsonSerializer.Deserialize<object>(aiMessage);
+                }
+                else
+                {
+                    finalResponse = aiMessage;
+                }
+
                 _logger.LogInformation("[{logId}] AI response received successfully", logId);
 
                 // Save chat history
@@ -128,7 +139,7 @@ namespace TaskManager.Services
                 {
                     ResponseCode = 0,
                     ResponseDescription = "Success",
-                    ResponseDatas = aiMessage
+                    ResponseDatas = finalResponse
                 };
             }
             catch (Exception)

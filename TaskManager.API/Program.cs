@@ -34,15 +34,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
-//#region ================== Serilog Configuration ==================
-////Log.Logger = new LoggerConfiguration()
-////    .ReadFrom.Configuration(builder.Configuration) // Reads from appsettings.json
-////    .Enrich.FromLogContext()
-////    .CreateLogger();
+#region ================== Serilog Configuration ==================
+//Log.Logger = new LoggerConfiguration()
+//    .ReadFrom.Configuration(builder.Configuration) // Reads from appsettings.json
+//    .Enrich.FromLogContext()
+//    .CreateLogger();
 
-////builder.Host.UseSerilog();
-////builder.Logging.ClearProviders();
-//#endregion
+//builder.Host.UseSerilog();
+//builder.Logging.ClearProviders();
+#endregion
+
+
+
 
 #region ================== Env Variables Config ==================
 if (builder.Environment.IsDevelopment())
@@ -164,6 +167,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AuthDBContext>()
     .AddDefaultTokenProviders();
 
+
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     options.Password.RequireDigit = false;
@@ -256,6 +261,11 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger"; // /swagger
 });
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    // Already handled by dotnet dev certs
+}
 
 // Custom Global Exception Handler Middleware
 app.UseMiddleware<ExceptionHandleMiddleware>();
